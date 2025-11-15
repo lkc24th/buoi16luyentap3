@@ -4,52 +4,243 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bài Tập CRUD DOM: Quản Lý Sản Phẩm</title>
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body>
-    <hr />
+  <body class="bg-[#f3f4f6] flex justify-center items-center min-h-screen">
+    
+    <div class="container flex flex-col items-center bg-[#ffffff] my-[15px] text-[#86b0be] text-[22px] font-bold w-full max-w-[700px]  border-[2px] rounded-[10px] border-[#ececec]">
 
-    <h1>Bài Tập CRUD DOM: Quản Lý Sản Phẩm</h1>
-
-    <div id="product-form-area">
-      <h2>Thêm Sản phẩm Mới</h2>
-      <input type="text" id="product-name-input" placeholder="Tên Sản phẩm" />
-      <input type="number" id="product-price-input" placeholder="Giá (VNĐ)" />
-
-      <input type="hidden" id="product-id-to-edit" value="" />
-
-      <button id="add-product-btn">Thêm Sản phẩm</button>
-      <button id="update-product-btn" style="display: none">
-        Lưu Thay đổi
-      </button>
-    </div>
-
-    <div id="product-list-area">
-      <h2>Danh sách Sản phẩm</h2>
-      <table
-        id="product-table"
-        border="1"
-        style="width: 100%; text-align: left"
-      >
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Tên Sản phẩm</th>
-            <th>Giá</th>
-            <th>Thao tác</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr data-id="1">
-            <td>1</td>
-            <td class="product-name">Bàn phím cơ</td>
-            <td class="product-price">1.200.000</td>
-            <td>
-              <button class="edit-btn">Sửa</button>
-              <button class="delete-btn">Xóa</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <h1>Bài Tập CRUD DOM: Quản Lý Sản Phẩm</h1>   
+      <div id="product-form-area" class="flex flex-col shadow-md pl-[18px] gap-[10px] text-[#86b0be] text-[20px] w-full max-w-[640px] bg-[#ffffff] border-[1px] border-[#ececec] rounded-[5px]"> 
+        <h2>Thêm Sản phẩm Mới</h2>
+        <input type="text" 
+          id="product-name-input" 
+          class="ps-2 py-2 font-normal text-[18px] w-full max-w-[600px] bg-[#ffffff] border-[1px] border-[#ececec] rounded-[5px]" 
+          placeholder="Tên Sản phẩm" />
+        <input type="number" 
+          id="product-price-input" 
+          placeholder="Giá (VNĐ)" 
+          class="ps-2 py-2 font-normal text-[18px] w-full max-w-[600px] bg-[#ffffff] border-[1px] border-[#ececec] rounded-[5px]"/>
+        <input type="hidden" 
+          id="product-id-to-edit" 
+          value="" />
+        <button id="add-product-btn" 
+          class="ps-1 py-2 font-normal text-[18px] w-full max-w-[140px] bg-[#86b0be] text-[#ffffff] border-[1px] border-[#ececec] rounded-[5px]">Thêm Sản phẩm</button>
+        <button id="update-product-btn" 
+          class="ps-2 py-2 font-normal text-[18px] w-full max-w-[140px] bg-[#] text-[#ffffff] border-[1px] border-[#ececec] rounded-[5px] hidden"
+          style="display: none">
+            Lưu Thay đổi
+        </button>
+      </div>
+        
+      <div id="product-list-area" class="flex flex-col mt-[20px] shadow-md pl-[18px] gap-[10px] mb-[10px] text-[#3C4759] text-[20px] w-full max-w-[640px] bg-[#ffffff] border-[1px] border-[#ececec] rounded-[5px]">
+        <h2>Danh sách Sản phẩm</h2>
+        <table
+          id="product-table"
+          class ="bg-[#ffffff] border-[1px] w-full max-w-[600px] bg-[#ffffff] mt-[3px]"  
+        >
+          <thead>
+            <tr class="bg-[#86b0be] text-[#ffffff] text-[18px]">
+              <th>ID</th>
+              <th>Tên Sản phẩm</th>
+              <th>Giá</th>
+              <th>Thao tác</th>
+            </tr>
+          </thead>
+          <tbody id="danhSachSanPham" class="text-black">
+            <tr class="border-b text-[18px] font-normal border-black">
+              <td class="py-3">1</td>
+              <td class="py-3">Bàn phím cơ</td>
+              <td class="py-3">1.200.000</td>
+              <td class="py-3 text-center space-x-2">
+                <button class="bg-[#f1b100] text-white px-3 py-1 rounded text-[14px] ">Sửa</button>
+                <button class="bg-[#fb2c37] text-white px-3 py-1 rounded text-[14px] ">Xóa</button>
+              </td>
+            </tr>
+            <tr class="border-b text-[18px] font-normal border-black">
+              <td class="py-3">2</td>
+              <td class="py-3">Máy tính bàn</td>
+              <td class="py-3">15.000.000</td>
+              <td class="py-3 text-center space-x-2">
+                <button class="bg-[#f1b100] text-white px-3 py-1 rounded text-[14px] ">Sửa</button>
+                <button class="bg-[#fb2c37] text-white px-3 py-1 rounded text-[14px] ">Xóa</button>
+              </td>
+            </tr>
+            <tr class="border-b text-[18px] font-normal border-black">
+              <td class="px-4 py-3">3</td>
+              <td class="px-4 py-3">Laptop cơ bản</td>
+              <td class="px-4 py-3">22.000.000</td>
+              <td class="px-4 py-3 text-center space-x-2">
+                <button class="bg-[#f1b100] text-white px-3 py-1 rounded text-[14px] ">Sửa</button>
+                <button class="bg-[#fb2c37] text-white px-3 py-1 rounded text-[14px] ">Xóa</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </body>
+  <script>
+  // let nameInput = document.getElementById("product-name-input");
+  // let priceInput = document.getElementById("product-price-input");
+  // let addBtn = document.getelementById("add-product-btn");
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  const nameInput = document.getElementById("product-name-input");
+  const priceInput = document.getElementById("product-price-input");
+  const addBtn = document.getElementById("add-product-btn");
+  const updateBtn = document.getElementById("update-product-btn");
+  const tbody = document.getElementById("danhSachSanPham");
+  const hiddenIdInput = document.getElementById("product-id-to-edit");
+
+  let editingId = null;
+
+  const formatPrice = (price) => Number(price).toLocaleString("vi-VN");
+
+  const renderTable = () => {
+    let products = JSON.parse(localStorage.getItem("products")) || [
+      { id: 1, name: "Bàn phím cơ", price: 1200000 },
+      { id: 2, name: "Máy tính bàn", price: 15000000 },
+      { id: 3, name: "Laptop cơ bản", price: 22000000 }
+    ];
+
+    localStorage.setItem("products", JSON.stringify(products));
+    tbody.innerHTML = "";
+
+    products.forEach((p, index) => {
+      const tr = document.createElement("tr");
+      tr.className = index % 2 === 0 
+        ? "border-b text-[18px] font-normal border-black" 
+        : "border-b bg-gray-50 text-[18px] font-normal border-black";
+      tr.dataset.id = p.id;
+
+      tr.innerHTML = `
+        <td class="px-4 py-3">${p.id}</td>
+        <td class="px-4 py-3 text-left whitespace-nowrap">${p.name}</td>
+        <td class="px-4 py-3 text-left whitespace-nowrap">${formatPrice(p.price)}</td>
+        <td class="px-4 py-3 text-center space-x-2">
+          <button class="edit-btn bg-[#f1b100] text-white px-3 py-1 rounded text-[14px]">Sửa</button>
+          <button class="delete-btn bg-[#fb2c37] text-white px-3 py-1 rounded text-[14px]">Xóa</button>
+        </td>
+      `;
+      tbody.appendChild(tr);
+    });
+
+    attachEvents();
+  };
+
+  const attachEvents = () => {
+    document.querySelectorAll(".edit-btn").forEach(btn => {
+      btn.addEventListener("click", function () {
+        const row = this.closest("tr");
+        editingId = row.dataset.id;
+
+        nameInput.value = row.children[1].textContent;
+        priceInput.value = row.children[2].textContent.replace(/\./g, "");
+        hiddenIdInput.value = editingId;
+
+        addBtn.style.display = "none";
+        updateBtn.style.display = "inline-block";
+      });
+    });
+
+    document.querySelectorAll(".delete-btn").forEach(btn => {
+      btn.addEventListener("click", function () {
+        deleteProduct(this);
+      });
+    });
+  };
+
+  const addProduct = () => {
+    const name = nameInput.value.trim();
+    const price = priceInput.value.trim();
+
+    if (!name || !price || isNaN(price) || price <= 0) {
+      alert("Vui lòng nhập tên và giá hợp lệ!");
+      return;
+    }
+
+    let products = JSON.parse(localStorage.getItem("products")) || [];
+    const newId = products.length ? Math.max(...products.map(p => p.id)) + 1 : 1;
+
+    products.push({ id: newId, name, price: +price });
+    localStorage.setItem("products", JSON.stringify(products));
+
+    nameInput.value = "";
+    priceInput.value = "";
+    renderTable();
+  };
+
+  const updateProduct = () => {
+    const name = nameInput.value.trim();
+    const price = priceInput.value.trim();
+
+    if (!name || !price || isNaN(price) || price <= 0) {
+      alert("Vui lòng nhập tên và giá hợp lệ!");
+      return;
+    }
+
+    const id = parseInt(hiddenIdInput.value);
+    let products = JSON.parse(localStorage.getItem("products")) || [];
+
+    products = products.map(p =>
+      p.id === id ? { ...p, name, price: +price } : p
+    );
+
+    localStorage.setItem("products", JSON.stringify(products));
+
+   
+    nameInput.value = "";
+    priceInput.value = "";
+    hiddenIdInput.value = "";
+    editingId = null;
+    addBtn.style.display = "inline-block";
+    updateBtn.style.display = "none";
+
+    renderTable();
+  };
+
+
+  const deleteProduct = (button) => {
+    if (!confirm("Bạn có chắc muốn xóa sản phẩm này?")) return;
+
+    const row = button.closest("tr");
+    const id = parseInt(row.dataset.id);
+
+    let products = JSON.parse(localStorage.getItem("products")) || [];
+    products = products.filter(p => p.id !== id);
+    products.forEach((p, i) => p.id = i + 1);
+
+    localStorage.setItem("products", JSON.stringify(products));
+    renderTable();
+  };
+
+  addBtn.addEventListener("click", addProduct);
+  updateBtn.addEventListener("click", updateProduct);
+
+  window.addEventListener("load", renderTable);
+</script>
 </html>
